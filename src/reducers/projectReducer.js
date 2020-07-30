@@ -1,7 +1,19 @@
+import cuid from 'cuid';
+
 const projectReducer = (state = {projects: [], loading: false }, action) => {
   switch (action.type) {
     case 'LOAD_PROJECTS':  
-      return;
+      return {
+        ...state,
+        projects: [...state.projects],
+        loading: true
+      }
+    case 'ADD_PROJECTS':
+      return {
+        ...state,
+        projects: action.projects,
+        loading: false
+      }
     case 'ADD_PROJECT':
       return;
     case 'DELETE_PROJECT':
