@@ -4,12 +4,14 @@ import ProjectList from "../components/projects/projectList";
 import ProjectShow from "../components/projects/projectShow";
 
 const ProjectPage = ({ match, projects }) => {
-    return (
-      <div>
-        <ProjectList projects={projects} />
-        <Route path={`${match.url}/:projectId`} render={routerProps => <ProjectShow {...routerProps} projects={projects} /> }/>
-      </div>
-    )
+  return (
+    <div>
+      <ProjectList projects={projects} />
+      <Route path={`${match.url}/:projectId`} render={routerProps => {
+        return <ProjectShow {...routerProps} projects={projects} /> 
+      }} />
+    </div>
+  )
 }
 
 export default ProjectPage;
