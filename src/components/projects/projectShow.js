@@ -11,9 +11,7 @@ const ProjectShow = projects => {
     )
   }
   else {
-    return (
-      <h1>No Project Found</h1>
-    )
+    return <h1>No Project Found</h1>
   }
 }
 
