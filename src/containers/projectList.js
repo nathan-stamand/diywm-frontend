@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import cuid from 'cuid';
 
 class ProjectList extends Component {
   listProjects = () => {
-    return this.props.projects.map(proj => <li key={cuid()}>{proj.attributes.name}</li>)
+    return this.props.projects.map(proj => {
+      return <li key={proj.attributes.key} >{proj.attributes.name}</li>
+    })
   }
 
   render() {
