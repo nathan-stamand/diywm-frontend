@@ -15,7 +15,11 @@ const projectReducer = (state = {projects: [], loading: false }, action) => {
         loading: false
       }
     case 'ADD_PROJECT':
-      return;
+      let project = {
+        key: cuid(),
+        ...action.project
+      }
+      return [...state, project];
     case 'DELETE_PROJECT':
       return;
     case 'UPDATE_PROJECT':
