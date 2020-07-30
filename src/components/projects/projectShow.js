@@ -16,8 +16,11 @@ const ProjectShow = projects => {
       </div>
     )
   }
+  else if (id === 'new') {
+    return <h1>New Project</h1>
+  }
   else {
-    return <h1>No Project Found</h1>
+    return <h1>Project Not Found</h1>
   }
 }
 
