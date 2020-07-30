@@ -6,6 +6,7 @@ import {
   Route
 } from 'react-router-dom';
 import ProjectPage from './containers/projectPage'
+import ProjectInput from './components/projects/projectInput'
 import './App.css';
 
 class App extends Component{
@@ -31,8 +32,10 @@ class App extends Component{
           <Route exact path="/" render={() => <div>HomePage</div>} />
           <Route path='/projects' render={routerProps => {
             return this.handleLoadProjects(routerProps)
-          }}
-          />
+          }} />
+          <Route path={`/projects/new`} render={routerProps => {
+        return <ProjectInput {...routerProps} />
+          }} />
         </div>
       </Router>
     );
