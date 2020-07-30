@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { addProject } from "../../actions/projects";
 
 class ProjectInput extends Component {
   render() {
     return (
       <div>
         <form>
-          <label for="name">Project Name</label><br/>
+          <label htmlFor="name">Project Name</label><br/>
           <input type="text" id="name"/><br/><br/>
 
-          <label for="blog">Blog</label><br/>
+          <label htmlFor="blog">Blog</label><br/>
           <textarea type="text" id="blog"/><br/><br/>
-          
+
           <input type="submit" value="Create Project" />
         </form>
       </div>
@@ -19,4 +20,16 @@ class ProjectInput extends Component {
   }
 }
 
-export default connect()(ProjectInput);
+const mapStateToProps = state => {
+  return ({
+    projects: state.projects
+  })
+}
+
+const mapDispatchToProps = dispatch => {
+  return ({
+    addProject: payload => dispatch(addProject(payload))
+  })
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectInput);
