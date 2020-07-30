@@ -7,7 +7,7 @@ const ProjectPage = ({ match, projects }) => {
     return (
       <div>
         <ProjectList projects={projects} />
-        <Route path={`${match}/:projectId`} render={routerProps => <ProjectShow {...routerProps} projects={projects} /> }/>
+        <Route path={`${match.url}/:projectId`} render={routerProps => <ProjectShow {...routerProps} projects={projects} /> }/>
       </div>
     )
 }
