@@ -22,21 +22,34 @@ export const createProject = project => {
     dispatch({type: 'CREATE_PROJECT', project});
     fetch('http://localhost:4000/projects', projectObject)
       .then(() => {
-        console.log(loadProjects)
         dispatch(loadProjects())
       })
   }
 }
 
-export const addProject = project => {
-  return ({
-    type: 'ADD_PROJECT',
-    project
-  })
-}
+// export const addProject = project => {
+//   return ({
+//     type: 'ADD_PROJECT',
+//     project
+//   })
+// }
 
 export const deleteProject = id => {
-  return
+  const projectObject = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({project_id: id})
+  }
+  return (dispatch) => {
+    dispatch({type: 'DELETE_PROJECT', id});
+    fetch(`http://localhost:4000/projects/${id}`, projectObject)
+      .then(() => {
+        dispatch(loadProjects())
+      })
+  }
 }
 
 export const updateProject = project => {
