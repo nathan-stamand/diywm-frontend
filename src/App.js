@@ -20,7 +20,7 @@ class App extends Component{
       return <div>Loading...</div>
     }
     else {
-      return <ProjectPage {...routerProps} projects={this.props.projects} />
+      return <ProjectPage {...routerProps} deleteProject={deleteProject} projects={this.props.projects} />
     }
   }
 
