@@ -9,8 +9,30 @@ export const loadProjects = () => {
   }
 }
 
+export const createProject = project => {
+  const projectObject = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(project)
+  }
+  return (dispatch) => {
+    dispatch({type: 'CREATE_PROJECT', project});
+    fetch('http://localhost:4000/projects', projectObject)
+      .then(() => {
+        console.log(loadProjects)
+        dispatch(loadProjects())
+      })
+  }
+}
+
 export const addProject = project => {
-  return
+  return ({
+    type: 'ADD_PROJECT',
+    project
+  })
 }
 
 export const deleteProject = id => {
