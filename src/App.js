@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { loadProjects } from './actions/projects'
 import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
 import ProjectPage from './containers/projectPage'
 import ProjectInput from './components/projects/projectInput'
+import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
 import './App.css';
 
 class App extends Component{
@@ -34,7 +34,7 @@ class App extends Component{
             return this.handleLoadProjects(routerProps)
           }} />
           <Route path={`/projects/new`} render={routerProps => {
-        return <ProjectInput {...routerProps} />
+        return <ProjectInput {...routerProps} createProject={createProject} />
           }} />
         </div>
       </Router>
@@ -49,4 +49,4 @@ const mapDispatchToProps = state => {
   })
 }
 
-export default connect(mapDispatchToProps, { loadProjects })(App);
+export default connect(mapDispatchToProps, { loadProjects, createProject, deleteProject, updateProject })(App);
