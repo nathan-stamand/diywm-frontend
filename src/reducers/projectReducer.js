@@ -27,7 +27,11 @@ const projectReducer = (state = {projects: [], loading: false }, action) => {
       }
       return [...state.projects, project];
     case 'DELETE_PROJECT':
-      return;
+      return {
+        ...state,
+        projects: [...state.projects],
+        loading: true
+      }
     case 'UPDATE_PROJECT':
       return;
     default:
