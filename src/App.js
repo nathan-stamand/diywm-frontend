@@ -29,11 +29,10 @@ class App extends Component{
       <Router>
         <div className="App">
           {/* <NavBar /> */}
-          <Route exact path="/" render={() => <div>HomePage</div>} />
-          <Route path='/projects' render={routerProps => {
+          <Route path='/' render={routerProps => {
             return this.handleLoadProjects(routerProps)
           }} />
-          <Route path={`/projects/new`} render={routerProps => {
+          <Route path={`/new`} render={routerProps => {
         return <ProjectInput {...routerProps} createProject={createProject} />
           }} />
         </div>
