@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 
 const ProjectList = ({ projects }) => {
   const renderProjects = projects.map((project, index) => {
-    return <li key={project.attributes.key} ><Link to={`/${project.id}`}>{projects[index].attributes.name}</Link></li>
-  })
+    return (<li key={project.attributes.key}>
+      <Link to={`/${project.id}`}>
+        {projects[index].attributes.name}
+      </Link>
+    </li>)})
 
   return (
     <div id="project-container">
