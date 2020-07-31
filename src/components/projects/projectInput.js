@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addProject } from "../../actions/projects";
+import { createProject } from '../../actions/projects';
+import cuid from 'cuid';
 
 class ProjectInput extends Component {
+  state = {
+    name: '',
+    blog: '',
+    key: cuid()
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+  }
+
+  handleSubmit = event => {
+    event.preventDefault()
+    this.props.createProject(this.state)
+    this.setState({name: '', blog: '', key: cuid()})
+  }
+
   render() {
     return (
       <div>
-        <form>
-          <label htmlFor="name">Project Name</label><br/>
-          <input type="text" id="name"/><br/><br/>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="name">Project Name</label>
+          <input type="text" id="name" value={this.state.name} onChange={this.handleChange}/>
 
-          <label htmlFor="blog">Blog</label><br/>
-          <textarea type="text" id="blog"/><br/><br/>
+          <label htmlFor="blog">Blog</label>
+          <textarea type="text" id="blog" value={this.state.blog} onChange={this.handleChange}/>
 
           <input type="submit" value="Create Project" />
         </form>
@@ -26,10 +45,8 @@ const mapStateToProps = state => {
   })
 }
 
-const mapDispatchToProps = dispatch => {
-  return ({
-    addProject: payload => dispatch(addProject(payload))
+const mapDispatchToProps = dispatch => ({
+    createProject: payload => dispatch(createProject(payload))
   })
-}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectInput);
