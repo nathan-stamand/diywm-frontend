@@ -9,7 +9,7 @@ class ProjectPage extends Component {
       <div>
         <ProjectList projects={this.props.projects} />
         <Route path={`/:projectId`} render={routerProps => {
-          return <ProjectShow {...routerProps} deleteProject={this.props.deleteProject} projects={this.props.projects} /> 
+          return <ProjectShow {...routerProps} projects={this.props.projects} /> 
         }} />
       </div>
     )
