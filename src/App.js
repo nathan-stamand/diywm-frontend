@@ -32,9 +32,6 @@ class App extends Component{
           <Route path='/' render={routerProps => {
             return this.handleLoadProjects(routerProps)
           }} />
-          <Route path={`/new`} render={routerProps => {
-        return <ProjectInput {...routerProps} createProject={createProject} />
-          }} />
         </div>
       </Router>
     );
