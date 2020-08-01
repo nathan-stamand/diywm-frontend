@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import ProjectList from "../components/projects/projectList";
 import ProjectShow from "../components/projects/projectShow";
 import ProjectInput from "../components/projects/projectInput";
+import ProjectEdit from "../components/projects/ProjectEdit";
 
 class ProjectPage extends Component {
   state = {
@@ -18,13 +19,17 @@ class ProjectPage extends Component {
       }} />
     }
     else if (project && id[1] === 'edit') {
-      console.log('bruh we out here')
-      return <div></div>
+      return <Route path={`/:projectId/edit`} render={routerProps => {
+        return <ProjectEdit {...routerProps} projects={this.props.projects} />
+      }} />
     }
     else if (project && !id[1]) {
       return <Route path={`/:projectId`} render={routerProps => {
         return <ProjectShow {...routerProps} projects={this.props.projects} /> 
       }} />
+    }
+    else {
+      return <Redirect to="/"></Redirect>
     }
   }
 
