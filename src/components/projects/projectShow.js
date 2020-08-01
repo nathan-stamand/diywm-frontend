@@ -2,8 +2,8 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 
 const ProjectShow = (props) => {
-  const id = props.match.params.projectId
-  const project = props.projects.find(proj => proj.id === id)
+  const id = props.location.pathname.split('/').slice(1)
+  const project = props.projects.find(proj => proj.id === id[0])
   if (project) {
     return (
       <div id="project-display">
@@ -16,9 +16,6 @@ const ProjectShow = (props) => {
           <p>{project.attributes.total_time} minute(s)</p>
       </div>
     )
-  }
-  else if (id === 'new') {
-    return <h1>New Project</h1>
   }
   else {
     return <Redirect to="/"></Redirect>
