@@ -1,10 +1,14 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import ProjectList from "../components/projects/projectList";
 import ProjectShow from "../components/projects/projectShow";
 import ProjectInput from "../components/projects/projectInput";
 
 class ProjectPage extends Component {
+  state = {
+    redirect: false
+  }
+
   findRoute = () => {
     const id = this.props.location.pathname.split('/').slice(1)
     const project = this.props.projects.find(proj => proj.id === id[0])
@@ -24,10 +28,21 @@ class ProjectPage extends Component {
     }
   }
 
+  redirectNewProject = () => {
+    this.setState({
+      redirect: 'new'
+    })
+  }
+
   render() {
+    if (this.state.redirect === 'new') {
+      this.setState({ redirect: false })
+    }
     return (
       <div>
+        {this.state.redirect === 'new' ? <Redirect to='/new'></Redirect> : null}
         <ProjectList projects={this.props.projects} />
+        <button id='new-proj-btn' onClick={() => this.redirectNewProject()}>+</button>
         {this.findRoute()}
       </div>
     )
