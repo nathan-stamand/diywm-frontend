@@ -5,7 +5,6 @@ import {
   Route
 } from 'react-router-dom';
 import ProjectPage from './containers/projectPage'
-import ProjectInput from './components/projects/projectInput'
 import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
 import './App.css';
 
