@@ -28,11 +28,9 @@ class App extends Component{
     return (
       <div className="App">
         <Router>
-          <Switch>
-            <Route path='/' render={routerProps => {
-              return this.handleLoadProjects(routerProps)
-            }} />
-          </Switch>
+          <Route path='/' render={routerProps => {
+            return this.handleLoadProjects(routerProps)
+          }} />
         </Router>
       </div>
     );
