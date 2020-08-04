@@ -9,10 +9,10 @@ class ProjectList extends Component {
       <Link to={`/${project.id}`}>
         {this.props.projects[index].attributes.name}
       </Link>
-      <button id="delete-btn" path="/" onClick={() => this.handleClick(project)}>X</button>
+      <button id="delete-btn" path="/" onClick={() => this.handleDelete(project)}>X</button>
     </li>)})
 
-  handleClick = project => {
+  handleDelete = project => {
     this.props.deleteProject(project.id)
   }
 
