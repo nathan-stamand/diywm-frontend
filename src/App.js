@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom';
 import ProjectPage from './containers/projectPage'
-import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
+import { loadProjects, createProject, deleteProject, editProject, updateProject } from "./actions/projects";
 import './App.css';
 
 class App extends Component{
@@ -19,29 +20,30 @@ class App extends Component{
       return <div>Loading...</div>
     }
     else {
-      return <ProjectPage {...routerProps} deleteProject={deleteProject} projects={this.props.projects} />
+      return <ProjectPage {...routerProps} deleteProject={deleteProject} editProject={editProject} projects={this.props.projects} />
     }
   }
 
   render () {
     return (
-      <Router>
-        <div className="App">
-          {/* <NavBar /> */}
-          <Route path='/' render={routerProps => {
-            return this.handleLoadProjects(routerProps)
-          }} />
-        </div>
-      </Router>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route path='/' render={routerProps => {
+              return this.handleLoadProjects(routerProps)
+            }} />
+          </Switch>
+        </Router>
+      </div>
     );
   }
 }
 
-const mapDispatchToProps = state => {
+const mapStateToProps = state => {
   return ({
     projects: state.projects,
     loading: state.loading
   })
 }
 
-export default connect(mapDispatchToProps, { loadProjects, createProject, deleteProject, updateProject })(App);
+export default connect(mapStateToProps, { loadProjects, createProject, deleteProject, editProject, updateProject })(App);
