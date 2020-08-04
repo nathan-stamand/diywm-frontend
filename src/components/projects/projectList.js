@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { deleteProject } from "../../actions/projects";
 import { connect } from 'react-redux';
+import { compose } from "redux";
 
 class ProjectList extends Component {
   renderProjects = () => this.props.projects.map((project, index) => {
@@ -16,10 +17,15 @@ class ProjectList extends Component {
     this.props.deleteProject(project.id)
   }
 
+  handleNew = () => {
+    this.props.history.push('/new')
+  }
+
   render() {
     return (
       <div id="project-container">
         {this.renderProjects()}
+        <button id='new-project-btn' onClick={this.handleNew}>+</button>
       </div>
     )
   }
@@ -30,4 +36,4 @@ const mapDispatchToProps = dispatch => ({
 })
 
 
-export default connect(null, mapDispatchToProps)(ProjectList);
+export default compose(withRouter, connect(null, mapDispatchToProps))(ProjectList);
