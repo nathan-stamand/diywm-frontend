@@ -46,5 +46,19 @@ export const deleteProject = id => {
 }
 
 export const updateProject = project => {
-  return
+  const projectObject = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(project)
+  }
+  return (dispatch) => {
+    dispatch({type: 'UPDATE_PROJECT', project});
+    fetch(`http://localhost:4000/projects/${project.id}`, projectObject)
+      .then(() => {
+        dispatch(loadProjects())
+      })
+  }
 }
