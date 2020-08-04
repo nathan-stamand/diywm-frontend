@@ -19,6 +19,7 @@ class ProjectShow extends Component {
           <h3>Time Required</h3>
             <p>{project.attributes.total_time || '0'} minute(s)</p>
           <button id="edit-project-btn" onClick={() => this.handleEdit(project)}>EDIT</button>
+          {console.log(project.attributes.steps)}
         </div>
       )
     }

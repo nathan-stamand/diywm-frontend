@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ProjectList from "../components/projects/projectList";
-import ProjectShow from "../components/projects/projectShow";
-import ProjectInput from "../components/projects/projectInput";
+import ProjectList from "../components/projects/ProjectList";
+import ProjectShow from "../components/projects/ProjectShow";
+import ProjectInput from "../components/projects/ProjectInput";
 import ProjectEdit from "../components/projects/ProjectEdit";
 import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 

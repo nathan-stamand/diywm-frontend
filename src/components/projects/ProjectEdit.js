@@ -29,6 +29,7 @@ class ProjectEdit extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
+    console.log(this.state)
   }
   render () {
     return (
