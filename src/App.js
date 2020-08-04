@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import {
   BrowserRouter as Router,
-  Route,
-  Switch
+  Route
 } from 'react-router-dom';
 import ProjectPage from './containers/projectPage'
-import { loadProjects, createProject, deleteProject, editProject, updateProject } from "./actions/projects";
+import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
 import './App.css';
 
 class App extends Component{
@@ -20,7 +19,7 @@ class App extends Component{
       return <div>Loading...</div>
     }
     else {
-      return <ProjectPage {...routerProps} deleteProject={deleteProject} editProject={editProject} projects={this.props.projects} />
+      return <ProjectPage {...routerProps} deleteProject={deleteProject} projects={this.props.projects} />
     }
   }
 
@@ -44,4 +43,4 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { loadProjects, createProject, deleteProject, editProject, updateProject })(App);
+export default connect(mapStateToProps, { loadProjects, createProject, deleteProject, updateProject })(App);
