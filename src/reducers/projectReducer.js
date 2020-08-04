@@ -33,7 +33,11 @@ const projectReducer = (state = {projects: [], loading: false }, action) => {
         loading: true
       }
     case 'UPDATE_PROJECT':
-      return;
+      return {
+        ...state,
+        projects: [...state.projects],
+        loading: true
+      };
     default:
       return state;
   }
