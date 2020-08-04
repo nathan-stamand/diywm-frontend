@@ -10,8 +10,7 @@ class ProjectPage extends Component {
     return (
       <div>
         <Router>
-          <ProjectList projects={this.props.projects} />
-          <button id='new-proj-btn' onClick={() => console.log('new project')}>+</button>
+          <ProjectList history={this.props.history} projects={this.props.projects} />
           <Switch>
             <Route path={`/new`}>
               <ProjectInput />
