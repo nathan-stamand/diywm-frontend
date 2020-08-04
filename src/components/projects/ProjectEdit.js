@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import { updateProject } from "../../actions/projects"
+import { compose } from "redux";
+import { connect } from "react-redux";
 
 class ProjectEdit extends Component {
   state = {
     name: '',
-    blog: ''
+    blog: '',
+    id: ''
   }
 
   componentDidMount = () => {
@@ -13,7 +17,8 @@ class ProjectEdit extends Component {
     if (project) {
       this.setState({
         name: project.attributes.name,
-        blog: project.attributes.blog
+        blog: project.attributes.blog,
+        id: project.id
       })
     }
     else {
@@ -29,7 +34,9 @@ class ProjectEdit extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.state)
+    const id = this.state.id
+    this.props.updateProject(this.state)
+    this.props.history.push(`/${id}`)
   }
   render () {
     return (
@@ -46,4 +53,10 @@ class ProjectEdit extends Component {
   }
 }
 
-export default withRouter(ProjectEdit);
+const mapDispatchToProps = dispatch => ({
+    updateProject: payload => dispatch(updateProject(payload))
+})
+
+export default compose(
+  withRouter,
+  connect(null, mapDispatchToProps))(ProjectEdit);
