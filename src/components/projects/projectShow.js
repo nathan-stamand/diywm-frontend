@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
 const ProjectShow = (props) => {
   const id = props.match.params.projectId;
@@ -18,7 +18,7 @@ const ProjectShow = (props) => {
     )
   }
   else {
-    return <h3 className='no-project-found'>No Project Found</h3>
+    return <Redirect to='/' />
   }
 }
 
