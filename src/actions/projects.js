@@ -27,13 +27,6 @@ export const createProject = project => {
   }
 }
 
-// export const addProject = project => {
-//   return ({
-//     type: 'ADD_PROJECT',
-//     project
-//   })
-// }
-
 export const deleteProject = id => {
   const projectObject = {
     method: 'DELETE',
