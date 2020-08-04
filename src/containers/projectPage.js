@@ -10,7 +10,7 @@ class ProjectPage extends Component {
     return (
       <div>
         <Router>
-          <ProjectList history={this.props.history} projects={this.props.projects} />
+          <ProjectList projects={this.props.projects} />
           <Switch>
             <Route path={`/new`}>
               <ProjectInput />
