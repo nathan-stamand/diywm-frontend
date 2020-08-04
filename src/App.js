@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route
 } from 'react-router-dom';
-import ProjectPage from './containers/projectPage'
+import ProjectPage from './containers/ProjectPage'
 import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
 import './App.css';
 
