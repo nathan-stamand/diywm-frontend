@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import StepList from "../components/steps/StepList";
 
 class StepPage extends Component {
   render() {
     return (
       <div>
-        {console.log(this.props)}
+        <StepList steps={this.props.steps} />
       </div>
     )
   }
