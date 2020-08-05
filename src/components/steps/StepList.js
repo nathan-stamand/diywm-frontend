@@ -1,6 +1,7 @@
 import React from "react";
 import cuid from 'cuid'
 import Step from "./Step";
+import { withRouter } from "react-router-dom";
 
 const StepList = props => {
   const mappedSteps = props.steps.map(step => {
@@ -13,4 +14,4 @@ const StepList = props => {
   )
 }
 
-export default StepList;
+export default withRouter(StepList);
