@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { cuid } from "cuid";
 
 class Step extends Component {
   render() {
@@ -13,6 +12,8 @@ class Step extends Component {
         <p>Materials: {materials}</p>
         <p>Time: {time}</p>
         <p>Directions: {directions}</p>
+        <button id="edit-step">EDIT STEP</button>
+        <button id="delete-step">DELETE STEP</button>
       </div>
     )
   }
