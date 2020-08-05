@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Redirect } from "react-router-dom";
+import StepPage from "../../containers/StepPage";
 
 class ProjectShow extends Component {
   handleEdit = project => {
@@ -19,6 +20,7 @@ class ProjectShow extends Component {
           <h3>Time Required</h3>
             <p>{project.attributes.total_time || '0'} minute(s)</p>
           <button id="edit-project-btn" onClick={() => this.handleEdit(project)}>EDIT</button>
+          <StepPage steps={project.attributes.steps}/>
         </div>
       )
     }
