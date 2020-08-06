@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import ProjectPage from './containers/ProjectPage'
 import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
 import './App.css';
@@ -26,11 +23,9 @@ class App extends Component{
   render () {
     return (
       <div className="App">
-        <Router>
-          <Route path='/' render={routerProps => {
-            return this.handleLoadProjects(routerProps)
-          }} />
-        </Router>
+        <Route path='/' render={routerProps => {
+          return this.handleLoadProjects(routerProps)
+        }} />
       </div>
     );
   }
