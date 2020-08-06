@@ -1,6 +1,12 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 class Step extends Component {
+  handleEdit = () => {
+    const id = this.props.step.id
+    this.props.history.push(`${this.props.match.url}/${id}/edit`)
+  }
+  
   render() {
     const header = this.props.step.header;
     const materials = this.props.step.materials || 'none';
@@ -12,11 +18,11 @@ class Step extends Component {
         <p>Materials: {materials}</p>
         <p>Time: {time}</p>
         <p>Directions: {directions}</p>
-        <button id="edit-step">EDIT STEP</button>
+        <button id="edit-step" onClick={() => this.handleEdit()}>EDIT STEP</button>
         <button id="delete-step">DELETE STEP</button>
       </div>
     )
   }
 }
 
-export default Step;
+export default withRouter(Step);
