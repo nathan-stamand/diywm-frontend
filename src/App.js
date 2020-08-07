@@ -3,12 +3,14 @@ import { connect } from "react-redux";
 import { Route } from 'react-router-dom';
 import ProjectPage from './containers/ProjectPage'
 import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
+import { loadSteps } from "./actions/steps";
 import './App.css';
 
 class App extends Component{
 
   componentDidMount() {
     this.props.loadProjects()
+    this.props.loadSteps()
   }
 
   handleLoadProjects = (routerProps) => {
@@ -33,9 +35,10 @@ class App extends Component{
 
 const mapStateToProps = state => {
   return ({
-    projects: state.projects,
-    loading: state.loading
+    projects: state.projects.projects,
+    steps: state.steps.steps,
+    loading: state.projects.loading
   })
 }
 
-export default connect(mapStateToProps, { loadProjects, createProject, deleteProject, updateProject })(App);
+export default connect(mapStateToProps, { loadProjects, loadSteps, createProject, deleteProject, updateProject })(App);
