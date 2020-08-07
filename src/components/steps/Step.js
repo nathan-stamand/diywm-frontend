@@ -6,7 +6,7 @@ class Step extends Component {
     const id = this.props.step.id
     this.props.history.push(`${this.props.match.url}/${id}/edit`)
   }
-  
+
   render() {
     const header = this.props.step.header;
     const materials = this.props.step.materials || 'none';
