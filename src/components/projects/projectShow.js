@@ -16,10 +16,25 @@ class ProjectShow extends Component {
       this.props.history.push(`${this.props.match.url}/steps`)
     }
   }
+
+  renderTotalTime = project => {
+    const reducer = (acc, currVal) => ({time: acc.time + currVal.time})
+    let steps
+    project ? steps = project.attributes.steps : steps = null;
+    if (steps) {
+      let totalMin = steps.reduce(reducer).time
+      let hours = parseInt(totalMin / 60)
+      let hourString = (hours === 1 ? 'hour' : 'hours')
+      let min = totalMin % 60
+      let minString = (min === 1 ? 'minute' : 'minutes')
+      return (`${hours} ${hourString} ${min} ${minString}`)
+    }
+  }
   
   render() {
     const id = this.props.match.params.projectId;
     const project = this.props.projects.find(proj => proj.id === id)
+    
     if (project) {
       return (
         <div id="project-display">
@@ -29,7 +44,7 @@ class ProjectShow extends Component {
           <h3>Materials</h3>
             <p>{project.attributes.materials || 'None'}</p>
           <h3>Time Required</h3>
-            <p>{project.attributes.total_time || '0'} minute(s)</p>
+            <p>{this.renderTotalTime(project)}</p>
           <button id="edit-project-btn" onClick={() => this.handleEdit()}>EDIT</button>
           <button id="show-hide-steps" onClick={() => this.handleShowSteps(project)}>SHOW/HIDE STEPS</button>
           <Route path={`${this.props.match.url}/steps`} render={() =>
