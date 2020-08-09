@@ -8,7 +8,6 @@ class ProjectEdit extends Component {
   state = {
     name: '',
     blog: '',
-    id: ''
   }
 
   componentDidMount = () => {
@@ -18,7 +17,6 @@ class ProjectEdit extends Component {
       this.setState({
         name: project.attributes.name,
         blog: project.attributes.blog,
-        id: project.id
       })
     }
     else {
@@ -34,8 +32,9 @@ class ProjectEdit extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    const id = this.state.id
-    this.props.updateProject(this.state)
+    const id = this.props.match.params.projectId
+    const project = {id: id, attributes: {name: this.state.name, blog: this.state.blog}}
+    this.props.updateProject(project)
     this.props.history.push(`/${id}`)
   }
   render () {
