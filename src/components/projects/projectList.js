@@ -3,10 +3,11 @@ import { Link, withRouter } from "react-router-dom";
 import { deleteProject } from "../../actions/projects";
 import { connect } from 'react-redux';
 import { compose } from "redux";
+import cuid from "cuid";
 
 class ProjectList extends Component {
   renderProjects = () => this.props.projects.map((project, index) => {
-    return (<li key={project.attributes.key}>
+    return (<li key={cuid()}>
       <Link to={`/${project.id}`}>
         {this.props.projects[index].attributes.name}
       </Link>
