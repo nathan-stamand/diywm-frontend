@@ -39,9 +39,9 @@ export const deleteProject = id => {
   return (dispatch) => {
     dispatch({type: 'DELETE_PROJECT', id});
     fetch(`http://localhost:4000/projects/${id}`, projectObject)
-      .then(() => {
-        dispatch(loadProjects())
-      })
+      // .then(() => {
+      //   dispatch(loadProjects())
+      // })
   }
 }
 
@@ -52,13 +52,10 @@ export const updateProject = project => {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
-    body: JSON.stringify(project)
+    body: JSON.stringify(project.attributes)
   }
   return (dispatch) => {
     dispatch({type: 'UPDATE_PROJECT', project});
     fetch(`http://localhost:4000/projects/${project.id}`, projectObject)
-      .then(() => {
-        dispatch(loadProjects())
-      })
   }
 }
