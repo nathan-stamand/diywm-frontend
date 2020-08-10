@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter, Redirect, Route } from "react-router-dom";
 import StepPage from "../../containers/StepPage";
+import StepInput from "../steps/StepInput";
 
 class ProjectShow extends Component {
   handleEdit = () => {
@@ -42,6 +43,10 @@ class ProjectShow extends Component {
       } />
     }
   }
+
+  handleAddStep = () => {
+    this.props.history.push(`${this.props.match.url}/steps/new`)
+  }
   
   render() {
     const id = this.props.match.params.projectId;
@@ -58,6 +63,10 @@ class ProjectShow extends Component {
           <h3>Time Required</h3>
             <p>{this.renderTotalTime(project)}</p>
           <button id="show-hide-steps" onClick={() => this.handleShowSteps(project)}>SHOW/HIDE STEPS</button>
+          <button id="add-step" onClick={() => this.handleAddStep(project)}>ADD STEP</button>
+          <Route path={`${this.props.match.url}/steps/new`} render={() => {
+            return <StepInput project={project} />
+          }} />
           {this.renderShowSteps(project)}
         </div>
       )
