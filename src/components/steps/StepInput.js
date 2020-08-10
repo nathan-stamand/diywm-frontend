@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
 class StepInput extends Component {
+  handleSubmit = event => {
+    event.preventDefault()
+  }
+  
   render () {
     return (
       <div>
-        <form >
+        <form onSubmit={this.handleSubmit}>
           Header: <input type="text" id="header" />
           Materials: <input type="text" id="materials" />
           Time: <input type="number" id="time" />
