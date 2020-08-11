@@ -24,3 +24,18 @@ export const addStep = step => {
       .then(() => dispatch(loadSteps()))
   }
 }
+
+export const deleteStep = id => {
+  const stepObj = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(id.step)
+  }
+  return (dispatch) => {
+    dispatch({type: 'DELETE_STEP', id: id.step})
+    fetch(`http://localhost:4000/projects/${id.project}/steps/${id.step}`, stepObj)
+  }
+}
