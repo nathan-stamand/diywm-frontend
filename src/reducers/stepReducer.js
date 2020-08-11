@@ -19,6 +19,12 @@ const stepReducer = (state = {steps: [], loading: false}, action) => {
         ...state,
         steps: [...state.steps, {id: cuid(), type: 'step', attributes: action.step}]
       }
+    case 'DELETE_STEP':
+      const newSteps = state.steps.filter(step => step.id != action.id)
+      return {
+        ...state,
+        steps: newSteps
+      }
     default:
       return state;
   }
