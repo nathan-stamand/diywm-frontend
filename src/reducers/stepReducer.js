@@ -14,6 +14,11 @@ const stepReducer = (state = {steps: [], loading: false}, action) => {
         steps: action.steps,
         loading: false
       }
+    case 'ADD_STEP':
+      return {
+        ...state,
+        steps: [...state.steps, {id: cuid(), type: 'step', attributes: action.step}]
+      }
     default:
       return state;
   }
