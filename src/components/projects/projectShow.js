@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { withRouter, Redirect, Route } from "react-router-dom";
 import StepPage from "../../containers/StepPage";
 import StepInput from "../steps/StepInput";
+import { connect } from "react-redux";
+import { compose } from "redux";
 
 class ProjectShow extends Component {
   handleEdit = () => {
@@ -36,10 +38,12 @@ class ProjectShow extends Component {
   }
 
   renderShowSteps = project => {
-    const steps = project.attributes.steps
+    const steps = this.props.steps.filter(step => {
+      return step.project_id || step.attributes.project_id === parseInt(project.id)
+    })
     if (steps && steps.length > 0) {
       return <Route path={`${this.props.match.url}/steps`} render={() =>
-        <StepPage project={project} steps={project.attributes.steps} />
+        <StepPage project={project} steps={steps} />
       } />
     }
   }
@@ -77,4 +81,10 @@ class ProjectShow extends Component {
   }
 }
 
-export default withRouter(ProjectShow);
+const mapStateToProps = state => ({
+  steps: state.steps.steps
+})
+
+export default compose(
+  withRouter,
+  connect(mapStateToProps))(ProjectShow);
