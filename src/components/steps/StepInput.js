@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { addStep } from "../../actions/steps";
 
 class StepInput extends Component {
   state = {
@@ -18,7 +21,8 @@ class StepInput extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.state, this.props.project)
+    this.props.addStep(this.state)
+    this.props.history.push(`${this.props.project.id}/steps`)
   }
 
   handleChange = event => {
@@ -42,4 +46,10 @@ class StepInput extends Component {
   }
 }
 
-export default withRouter(StepInput);
+const mapDispatchToProps = dispatch => ({
+  addStep: payload => dispatch(addStep(payload))
+})
+
+export default compose(
+  withRouter,
+  connect(null, mapDispatchToProps))(StepInput);
