@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { createProject } from '../../actions/projects';
 import cuid from 'cuid';
+import { compose } from "redux";
+import { withRouter } from "react-router-dom";
 
 class ProjectInput extends Component {
   state = {
@@ -20,7 +22,8 @@ class ProjectInput extends Component {
   handleSubmit = event => {
     event.preventDefault()
     this.props.createProject(this.state)
-    this.setState({name: '', blog: '', key: cuid()})
+    // this.setState({name: '', blog: '', key: cuid()})
+    this.props.history.push('/')
   }
 
   render() {
@@ -32,7 +35,7 @@ class ProjectInput extends Component {
 
           <label htmlFor="blog">Blog</label>
           <textarea type="text" id="blog" value={this.state.blog} onChange={this.handleChange}/>
-
+          
           <input type="submit" value="Create Project" />
         </form>
       </div>
@@ -50,4 +53,6 @@ const mapDispatchToProps = dispatch => ({
     createProject: payload => dispatch(createProject(payload))
   })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectInput);
+export default compose(
+  withRouter,
+  connect(mapStateToProps, mapDispatchToProps))(ProjectInput);
