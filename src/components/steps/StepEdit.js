@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 class StepEdit extends Component {
   state = {
+    id: '',
     header: '',
     materials: '',
     time: '',
@@ -13,19 +14,37 @@ class StepEdit extends Component {
     project_id: '',
   }
 
+  componentDidMount = () => {
+    this.setState({
+      id: this.props.id,
+      header: this.props.step.header,
+      materials: this.props.step.materials,
+      time: this.props.step.time,
+      directions: this.props.step.directions,
+      project_id: this.props.step.project_id
+    })
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.id]: event.target.value
+    })
+  }
+
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.props)
+    this.props.updateStep(this.state)
+    this.props.history.push(`${this.props.match.url}`)
   }
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          Header: <input type="text" id="header" />
-          Materials: <input type="text" id="materials" />
-          Time: <input type="number" id="time" />
-          Directions: <textarea type="text" id="directions" />
+          Header: <input type="text" id="header" value={this.state.header} onChange={this.handleChange}/>
+          Materials: <input type="text" id="materials" value={this.state.materials} onChange={this.handleChange}/>
+          Time: <input type="number" id="time" value={this.state.time} onChange={this.handleChange}/>
+          Directions: <textarea type="text" id="directions" value={this.state.directions} onChange={this.handleChange}/>
           <input type="submit" value="Save Changes" />
         </form>
       </div>
