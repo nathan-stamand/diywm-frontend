@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 class ProjectEdit extends Component {
   state = {
     name: '',
+    materials: '',
     blog: '',
   }
 
@@ -16,6 +17,7 @@ class ProjectEdit extends Component {
     if (project) {
       this.setState({
         name: project.attributes.name,
+        materials: project.attributes.materials,
         blog: project.attributes.blog,
       })
     }
@@ -43,6 +45,8 @@ class ProjectEdit extends Component {
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Project Name:</label>
           <input type="text" id="name" value={this.state.name} onChange={this.handleChange}/>
+          <label htmlFor="materials">Materials:</label>
+          <textarea id="materials" value={this.state.materials} onChange={this.handleChange} />
           <label htmlFor="blog">Blog:</label>
           <textarea id="blog" value={this.state.blog} onChange={this.handleChange} />
           <input type="submit" value="Save Changes" />

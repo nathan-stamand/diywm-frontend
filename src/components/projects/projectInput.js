@@ -8,6 +8,7 @@ import { withRouter } from "react-router-dom";
 class ProjectInput extends Component {
   state = {
     name: '',
+    materials: '',
     blog: '',
     key: cuid()
   }
@@ -32,6 +33,9 @@ class ProjectInput extends Component {
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Project Name</label>
           <input type="text" id="name" value={this.state.name} onChange={this.handleChange}/>
+
+          <label htmlFor="materials">Materials</label>
+          <textarea type="text" id="materials" value={this.state.materials} onChange={this.handleChange} />
 
           <label htmlFor="blog">Blog</label>
           <textarea type="text" id="blog" value={this.state.blog} onChange={this.handleChange}/>
