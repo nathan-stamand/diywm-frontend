@@ -39,3 +39,19 @@ export const deleteStep = id => {
     fetch(`http://localhost:4000/projects/${id.project}/steps/${id.step}`, stepObj)
   }
 }
+
+export const updateStep = step => {
+  const stepObj = {
+    method: 'PATCH',
+    headers: {
+      'Content-type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify(step)
+  }
+  return (dispatch) => {
+    dispatch({type: 'UPDATE_STEP', step})
+    fetch(`http://localhost:4000/projects/${step.project_id}/steps/${step.id}`, stepObj)
+      .then(() => dispatch(loadSteps()))
+  }
+}
