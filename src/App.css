@@ -3,26 +3,40 @@
   width: 100%
 }
 
+body {
+  height: 100%;
+  box-sizing: border-box;
+  background-image: url("./pastel-paint.jpg");
+}
+
 #sidebar {
-    width: 250px;
+    width: 18%;
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: #a1a1a1;
+    background: linear-gradient(rgba(95, 197, 117, 0.767), rgba(2, 70, 32, 0.884));
     color: #fff;
     transition: all 0.3s;
     text-align: center;
 }
 
 .content {
-  background-image: url("./pastel-boards.jpg");
   display: block;
-  position: relative;
-  left: 250px;
+  position: absolute;
   float: left;
   z-index: 1;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 60%;
+  padding: 10px;
+  text-align: center;
 }
 
 ul {
