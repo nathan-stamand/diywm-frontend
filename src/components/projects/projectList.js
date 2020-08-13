@@ -7,11 +7,11 @@ import cuid from "cuid";
 
 class ProjectList extends Component {
   renderProjects = () => this.props.projects.map((project, index) => {
-    return (<li key={cuid()}>
+    return (<li key={cuid()} className="project-link" >
+      <button id="delete-btn" path="/" onClick={() => this.handleDelete(project)}>X</button>
       <Link to={`/${project.id}`}>
         {this.props.projects[index].attributes.name}
       </Link>
-      <button id="delete-btn" path="/" onClick={() => this.handleDelete(project)}>X</button>
     </li>)})
 
   handleDelete = project => {
@@ -24,9 +24,16 @@ class ProjectList extends Component {
 
   render() {
     return (
-      <div id="project-container">
-        {this.renderProjects()}
-        <button id='new-project-btn' onClick={this.handleNew}>+</button>
+      <div id="project container">
+        <nav id="sidebar">
+          <div id="sidebar-header">
+            <h3>My Projects</h3>
+          </div>
+          <ul className="my-projects-list">
+            {this.renderProjects()}
+          </ul>
+          <button id='new-project-btn' onClick={this.handleNew}>+</button>
+        </nav>
       </div>
     )
   }

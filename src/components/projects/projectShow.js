@@ -58,7 +58,7 @@ class ProjectShow extends Component {
     const project = this.props.projects.find(proj => proj.id === id)
     if (project) {
       return (
-        <div id="project-display">
+        <div className="content">
           <h1>{project.attributes.name}</h1>
           <h3>Blog</h3>
             <p>{project.attributes.blog}</p>

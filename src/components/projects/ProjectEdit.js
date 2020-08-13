@@ -41,7 +41,7 @@ class ProjectEdit extends Component {
   }
   render () {
     return (
-      <div>
+      <div className="content">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Project Name:</label>
           <input type="text" id="name" value={this.state.name} onChange={this.handleChange}/>
