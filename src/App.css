@@ -10,13 +10,14 @@
     left: 0;
     height: 100vh;
     z-index: 999;
-    background: #0dc4b4;
+    background: #a1a1a1;
     color: #fff;
     transition: all 0.3s;
     text-align: center;
 }
 
 .content {
+  background-image: url("./pastel-boards.jpg");
   display: block;
   position: relative;
   left: 250px;
