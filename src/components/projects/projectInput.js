@@ -31,14 +31,14 @@ class ProjectInput extends Component {
     return (
       <div className="content">
         <form onSubmit={this.handleSubmit}>
-          <label htmlFor="name">Project Name</label>
-          <input type="text" id="name" value={this.state.name} onChange={this.handleChange}/>
+          <label htmlFor="name">Project Name:</label><br/>
+          <input type="text" id="name" value={this.state.name} onChange={this.handleChange}/><br/><br/>
 
-          <label htmlFor="materials">Materials</label>
-          <textarea type="text" id="materials" value={this.state.materials} onChange={this.handleChange} />
+          <label htmlFor="materials">Materials: </label><br/>
+          <textarea type="text" id="materials" value={this.state.materials} onChange={this.handleChange} /><br/><br/>
 
-          <label htmlFor="blog">Blog</label>
-          <textarea type="text" id="blog" value={this.state.blog} onChange={this.handleChange}/>
+          <label htmlFor="blog">Blog: </label><br/>
+          <textarea type="text" id="blog" value={this.state.blog} onChange={this.handleChange}/><br/><br/>
           
           <input type="submit" value="Create Project" />
         </form>

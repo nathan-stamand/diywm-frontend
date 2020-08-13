@@ -8,7 +8,7 @@ import cuid from "cuid";
 class ProjectList extends Component {
   renderProjects = () => this.props.projects.map((project, index) => {
     return (<li key={cuid()} className="project-link" >
-      <button id="delete-btn" path="/" onClick={() => this.handleDelete(project)}>X</button>
+      <button className="delete-btn" path="/" onClick={() => this.handleDelete(project)}>DELETE</button>
       <Link to={`/${project.id}`}>
         {this.props.projects[index].attributes.name}
       </Link>
