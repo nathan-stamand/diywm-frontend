@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  width: 100%
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #0dc4b4;
+    color: #fff;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.content {
+  display: block;
+  position: relative;
+  left: 250px;
+  float: left;
+  z-index: 1;
+}
+
+ul {
+  display: inline-block;
+  list-style: none;
+  padding-left: 0%;
+}
+
+#new-project-btn {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  font-size: medium;
+}
+
+.project-link:hover {
+  transform: scale(1.1);
+}
