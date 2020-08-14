@@ -56,7 +56,8 @@ a {
   font-size: medium;
 }
 
-.project-link:hover {
+.project-link:hover, #main-heading:hover, button:hover {
+  transition: .5s;
   transform: scale(1.1);
 }
 
