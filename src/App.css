@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  width: 100%
+  width: 100%;
 }
 
 body {
@@ -66,16 +66,37 @@ a {
   margin-left: auto;
   background: #114224;
   color: white;
+  border-width: 1px;
   border-color: rgb(255, 255, 255);
   border-style: solid;
   padding: 0 20% 0 20%;
 }
 
 .delete-btn {
+  font-size: 1%;
   background: #114224;
   color: white;
+  border-width: 1px;
   border-color: rgb(255, 255, 255);
   border-style: solid;
   border-radius: 10px;
   margin-right: 10px;
+}
+
+button, input[type='submit'] {
+  background-color: rgb(214, 101, 101);
+  color: blanchedalmond;
+  border: transparent;
+  margin: 5px;
+}
+
+input {
+  background-color: blanchedalmond;
+  color: rgb(124, 24, 24);
+}
+
+textarea {
+  background-color: blanchedalmond;
+  color: rgb(124, 24, 24);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
