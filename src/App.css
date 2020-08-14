@@ -100,3 +100,13 @@ textarea {
   color: rgb(124, 24, 24);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+#main-heading {
+  position: absolute;
+  right: 3%;
+  top: 0%;
+  color: white;
+  font-size: large;
+  z-index: 2;
+  text-shadow: 0 0 3px black, 0 0 3px black, 0 0 3px black;
+}
