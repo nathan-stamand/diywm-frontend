@@ -3,7 +3,9 @@ import ProjectList from "../components/projects/ProjectList";
 import ProjectShow from "../components/projects/ProjectShow";
 import ProjectInput from "../components/projects/ProjectInput";
 import ProjectEdit from "../components/projects/ProjectEdit";
+import { createProject, deleteProject, updateProject } from "../actions/projects";
 import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 class ProjectPage extends Component {
   render() {
@@ -26,4 +28,4 @@ class ProjectPage extends Component {
   }
 }
 
-export default ProjectPage;
+export default connect(null, { createProject, deleteProject, updateProject })(ProjectPage);

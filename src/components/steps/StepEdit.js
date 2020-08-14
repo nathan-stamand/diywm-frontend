@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { updateStep } from "../../actions/steps";
-import { compose } from "redux";
-import { connect } from "react-redux";
 
 class StepEdit extends Component {
   state = {
@@ -18,7 +15,6 @@ class StepEdit extends Component {
     this.setState({
       id: this.props.id,
       header: this.props.step.header,
-      // materials: this.props.step.materials,
       time: this.props.step.time,
       directions: this.props.step.directions,
       project_id: this.props.step.project_id
@@ -54,6 +50,4 @@ class StepEdit extends Component {
   }
 }
 
-export default compose(
-  withRouter,
-  connect(null, { updateStep }))(StepEdit);
+export default withRouter(StepEdit);

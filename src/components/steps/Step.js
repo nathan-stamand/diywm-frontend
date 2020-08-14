@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { deleteStep } from "../../actions/steps";
-import { compose } from "redux";
-import { connect } from "react-redux";
 
 class Step extends Component {
   handleEdit = () => {
@@ -34,10 +31,4 @@ class Step extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  deleteStep: payload => dispatch(deleteStep(payload))
-})
-
-export default compose(
-  withRouter,
-  connect(null, mapDispatchToProps))(Step);
+export default withRouter(Step);

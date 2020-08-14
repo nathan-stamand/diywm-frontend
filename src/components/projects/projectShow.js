@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Redirect, Route } from "react-router-dom";
-import StepPage from "../../containers/StepPage";
+import StepList from "../../containers/StepList";
 import StepInput from "../steps/StepInput";
 import { connect } from "react-redux";
 import { compose } from "redux";
@@ -44,7 +44,7 @@ class ProjectShow extends Component {
     })
     if (steps && steps.length > 0) {
       return <Route path={`${this.props.match.url}/steps`} render={() =>
-        <StepPage project={project} steps={steps} />
+        <StepList project={project} steps={steps} />
       } />
     }
   }

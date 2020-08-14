@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Route, withRouter } from 'react-router-dom';
 import ProjectPage from './containers/ProjectPage'
-import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
+import { loadProjects } from "./actions/projects";
 import { loadSteps } from "./actions/steps";
 import './App.css';
 import { compose } from 'redux';
@@ -19,7 +19,7 @@ class App extends Component{
       return <div>Loading...</div>
     }
     else {
-      return <ProjectPage {...routerProps} deleteProject={deleteProject} projects={this.props.projects} />
+      return <ProjectPage {...routerProps} projects={this.props.projects} />
     }
   }
 
@@ -51,5 +51,5 @@ export default compose(
   withRouter,
   connect(
     mapStateToProps,
-    { loadProjects, loadSteps, createProject, deleteProject, updateProject }))
+    { loadProjects, loadSteps }))
     (App);

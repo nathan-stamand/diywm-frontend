@@ -35,7 +35,7 @@ class ProjectEdit extends Component {
   handleSubmit = event => {
     event.preventDefault()
     const id = this.props.match.params.projectId
-    const project = {id: id, attributes: {name: this.state.name, blog: this.state.blog}}
+    const project = {id: id, attributes: this.state}
     this.props.updateProject(project)
     this.props.history.push(`/${id}`)
   }
