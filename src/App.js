@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import ProjectPage from './containers/ProjectPage'
 import { loadProjects, createProject, deleteProject, updateProject } from "./actions/projects";
 import { loadSteps } from "./actions/steps";
 import './App.css';
+import { compose } from 'redux';
 
 class App extends Component{
 
@@ -22,9 +23,14 @@ class App extends Component{
     }
   }
 
+  returnHome = () => {
+    this.props.history.push('/')
+  }
+
   render () {
     return (
       <div className="App">
+        <div id="main-heading" onClick={this.returnHome}><h1>DIY With Me!</h1></div>
         <Route path='/' render={routerProps => {
           return this.handleLoadProjects(routerProps)
         }} />
@@ -41,4 +47,9 @@ const mapStateToProps = state => {
   })
 }
 
-export default connect(mapStateToProps, { loadProjects, loadSteps, createProject, deleteProject, updateProject })(App);
+export default compose(
+  withRouter,
+  connect(
+    mapStateToProps,
+    { loadProjects, loadSteps, createProject, deleteProject, updateProject }))
+    (App);
