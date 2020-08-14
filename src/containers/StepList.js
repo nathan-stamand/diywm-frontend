@@ -10,9 +10,9 @@ import { compose } from "redux";
 class StepList extends Component {
   mappedSteps = () => {
     const pathArray = this.props.location.pathname.split('/').slice(3)
-    const steps = this.props.steps.filter(step => {
+    const steps = this.props.steps ? this.props.steps.filter(step => {
       return step.project_id || step.attributes.project_id === parseInt(this.props.project.id)
-    })
+    }) : []
     return steps.map(step => {
       if (step.id === pathArray[0] && pathArray[1] === 'edit') {
         return <StepEdit key={cuid()} id={step.id} updateStep={this.props.updateStep} step={step.attributes} />
