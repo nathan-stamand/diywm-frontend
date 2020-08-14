@@ -59,6 +59,7 @@ a {
 .project-link:hover, #main-heading:hover, button:hover {
   transition: .5s;
   transform: scale(1.1);
+  cursor: pointer;
 }
 
 #new-project-btn {
