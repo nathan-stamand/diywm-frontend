@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from "react-redux";
-import { createProject } from '../../actions/projects';
 import cuid from 'cuid';
-import { compose } from "redux";
 import { withRouter } from "react-router-dom";
 
 class ProjectInput extends Component {
@@ -15,7 +12,6 @@ class ProjectInput extends Component {
 
   handleChange = event => {
     this.setState({
-      ...this.state,
       [event.target.id]: event.target.value
     })
   }
@@ -46,16 +42,4 @@ class ProjectInput extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return ({
-    projects: state.projects
-  })
-}
-
-const mapDispatchToProps = dispatch => ({
-    createProject: payload => dispatch(createProject(payload))
-  })
-
-export default compose(
-  withRouter,
-  connect(mapStateToProps, mapDispatchToProps))(ProjectInput);
+export default withRouter(ProjectInput);

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withRouter, Redirect, Route } from "react-router-dom";
-import StepList from "../../containers/StepList";
+import StepContainer from "../../containers/StepContainer";
 import StepInput from "../steps/StepInput";
 
 class ProjectShow extends Component {
@@ -55,7 +55,7 @@ class ProjectShow extends Component {
             return <StepInput project={project} />
           }} />
           <Route path={`${this.props.match.url}/steps`} render={() =>
-            <StepList project={project}/>
+            <StepContainer project={project}/>
           } />
         </div>
       )

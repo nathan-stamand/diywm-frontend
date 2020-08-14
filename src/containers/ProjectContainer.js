@@ -7,17 +7,17 @@ import { createProject, deleteProject, updateProject } from "../actions/projects
 import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
-class ProjectPage extends Component {
+class ProjectContainer extends Component {
   render() {
     return (
       <div>
         <ProjectList projects={this.props.projects} />
         <Switch>
           <Route path={`/new`}>
-            <ProjectInput />
+            <ProjectInput projects={this.props.projects} createProject={this.props.createProject}/>
           </Route>
           <Route path={`/:projectId/edit`}>
-            <ProjectEdit projects={this.props.projects}/>
+            <ProjectEdit projects={this.props.projects} updateProject={this.props.updateProject}/>
           </Route>
           <Route path={`/:projectId`}>
             <ProjectShow projects={this.props.projects}/>
@@ -28,4 +28,4 @@ class ProjectPage extends Component {
   }
 }
 
-export default connect(null, { createProject, deleteProject, updateProject })(ProjectPage);
+export default connect(null, { createProject, deleteProject, updateProject })(ProjectContainer);

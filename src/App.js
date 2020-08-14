@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Route, withRouter } from 'react-router-dom';
-import ProjectPage from './containers/ProjectPage'
+import ProjectContainer from './containers/ProjectContainer'
 import { loadProjects } from "./actions/projects";
 import { loadSteps } from "./actions/steps";
 import './App.css';
@@ -19,7 +19,7 @@ class App extends Component{
       return <div>Loading...</div>
     }
     else {
-      return <ProjectPage {...routerProps} projects={this.props.projects} />
+      return <ProjectContainer {...routerProps} projects={this.props.projects} />
     }
   }
 

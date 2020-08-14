@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import { updateProject } from "../../actions/projects"
-import { compose } from "redux";
-import { connect } from "react-redux";
 
 class ProjectEdit extends Component {
   state = {
@@ -39,6 +36,7 @@ class ProjectEdit extends Component {
     this.props.updateProject(project)
     this.props.history.push(`/${id}`)
   }
+  
   render () {
     return (
       <div className="content">
@@ -56,10 +54,4 @@ class ProjectEdit extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-    updateProject: payload => dispatch(updateProject(payload))
-})
-
-export default compose(
-  withRouter,
-  connect(null, mapDispatchToProps))(ProjectEdit);
+export default withRouter(ProjectEdit);

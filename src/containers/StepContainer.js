@@ -7,7 +7,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 
-class StepList extends Component {
+class StepContainer extends Component {
   mappedSteps = () => {
     const pathArray = this.props.location.pathname.split('/').slice(3)
     const steps = this.props.steps ? this.props.steps.filter(step => {
@@ -51,4 +51,4 @@ const mapStateToProps = state => ({
 export default compose(
   withRouter,
   connect(mapStateToProps, { addStep, deleteStep, updateStep })
-)(StepList);
+)(StepContainer);
