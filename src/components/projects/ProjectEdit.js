@@ -44,11 +44,11 @@ class ProjectEdit extends Component {
       <div className="content">
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="name">Project Name:</label><br/>
-          <input required type="text" id="name" value={this.state.name} onChange={this.handleChange}/><br/><br/>
+          <input required type="text" id="name" maxLength="50" value={this.state.name} onChange={this.handleChange}/><br/><br/>
           <label htmlFor="materials">Materials:</label><br/>
-          <textarea required id="materials" value={this.state.materials} onChange={this.handleChange} /><br/><br/>
+          <textarea required id="materials" maxLength="1000" value={this.state.materials} onChange={this.handleChange} /><br/><br/>
           <label htmlFor="blog">Blog:</label><br/>
-          <textarea required id="blog" value={this.state.blog} onChange={this.handleChange} /><br/><br/>
+          <textarea required id="blog" maxLength="1000" value={this.state.blog} onChange={this.handleChange} /><br/><br/>
           <input type="submit" value="Save Changes" />
         </form>
       </div>
