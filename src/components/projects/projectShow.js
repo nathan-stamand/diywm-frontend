@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { withRouter, Redirect, Route } from "react-router-dom";
 import StepList from "../../containers/StepList";
 import StepInput from "../steps/StepInput";
-import { connect } from "react-redux";
-import { compose } from "redux";
 
 class ProjectShow extends Component {
   handleEdit = () => {
@@ -38,21 +36,6 @@ class ProjectShow extends Component {
     }
   }
 
-  renderShowSteps = project => {
-    const steps = this.props.steps.filter(step => {
-      return step.project_id || step.attributes.project_id === parseInt(project.id)
-    })
-    if (steps && steps.length > 0) {
-      return <Route path={`${this.props.match.url}/steps`} render={() =>
-        <StepList project={project} steps={steps} />
-      } />
-    }
-  }
-
-  handleAddStep = () => {
-    this.props.history.push(`${this.props.match.url}/steps/new`)
-  }
-  
   render() {
     const id = this.props.match.params.projectId;
     const project = this.props.projects.find(proj => proj.id === id)
@@ -68,11 +51,12 @@ class ProjectShow extends Component {
           <h3>Time Required</h3>
             <p>{this.renderTotalTime(project)}</p>
           <button id="show-hide-steps" onClick={() => this.handleShowSteps(project)}>SHOW/HIDE STEPS</button>
-          <button id="add-step" onClick={() => this.handleAddStep(project)}>ADD STEP</button>
           <Route path={`${this.props.match.url}/steps/new`} render={() => {
             return <StepInput project={project} />
           }} />
-          {this.renderShowSteps(project)}
+          <Route path={`${this.props.match.url}/steps`} render={() =>
+            <StepList project={project}/>
+          } />
         </div>
       )
     }
@@ -82,10 +66,4 @@ class ProjectShow extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  steps: state.steps.steps
-})
-
-export default compose(
-  withRouter,
-  connect(mapStateToProps))(ProjectShow);
+export default withRouter(ProjectShow);
