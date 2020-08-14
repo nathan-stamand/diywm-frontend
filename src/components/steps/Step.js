@@ -25,8 +25,7 @@ class Step extends Component {
     return(
       <div>
         <h4>{header}</h4>
-        {/* <p>Materials: {materials}</p> */}
-        <p>Time: {time}</p>
+        <p>Time: {time} minute(s)</p>
         <p>Directions: {directions}</p>
         <button id="edit-step" onClick={() => this.handleEdit()}>EDIT STEP</button>
         <button id="delete-step" onClick={() => this.handleDelete()}>DELETE STEP</button>

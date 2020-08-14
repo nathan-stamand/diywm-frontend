@@ -42,9 +42,11 @@ class StepEdit extends Component {
       <div>
         <br/>
         <form onSubmit={this.handleSubmit}>
-          Header: <input type="text" id="header" value={this.state.header} onChange={this.handleChange}/><br/><br/>
-          Time: <input type="number" id="time" value={this.state.time} onChange={this.handleChange}/> minute(s)<br/><br/>
-          Directions: <textarea type="text" id="directions" value={this.state.directions} onChange={this.handleChange}/><br/><br/>
+          <label htmlFor="header">Header:</label><br/>
+          <input required type="text" id="header" value={this.state.header} onChange={this.handleChange}/><br/><br/>
+          Time: <input required type="number" id="time" max="999" min="0" value={this.state.time} onChange={this.handleChange}/> minute(s)<br/><br/>
+          <label htmlFor="directions">Directions:</label><br/>
+          <textarea required type="text" id="directions" value={this.state.directions} onChange={this.handleChange}/><br/><br/>
           <input type="submit" value="Save Changes" />
         </form>
       </div>
