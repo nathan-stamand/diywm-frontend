@@ -28,7 +28,7 @@ class ProjectContainer extends Component {
             <ProjectEdit projects={this.props.projects} updateProject={this.props.updateProject}/>
           </Route>
           <Route path={`/:projectId`}>
-            <ProjectShow projects={this.props.projects}/>
+            <ProjectShow steps={this.props.steps} projects={this.props.projects}/>
           </Route>          
         </Switch>
       </div>
