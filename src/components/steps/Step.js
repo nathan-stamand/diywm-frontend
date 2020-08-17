@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import EditStep from "./buttons/EditStep";
+import DeleteStep from "./buttons/DeleteStep";
 
 class Step extends Component {
   handleEdit = () => {
@@ -23,8 +25,8 @@ class Step extends Component {
         <h4>{header}</h4>
         <p>Time: {time} minute(s)</p>
         <p>Directions: {directions}</p>
-        <button id="edit-step" onClick={() => this.handleEdit()}>EDIT STEP</button>
-        <button id="delete-step" onClick={() => this.handleDelete()}>DELETE STEP</button>
+        <EditStep handleEdit={this.handleEdit} />
+        <DeleteStep id="delete-step" handleDelete={this.handleDelete} />
       </div>
     )
   }
