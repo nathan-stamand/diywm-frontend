@@ -8,10 +8,18 @@ import { Switch, Route } from "react-router-dom";
 import { connect } from "react-redux";
 
 class ProjectContainer extends Component {
+  handleDelete = (project) => {
+    this.props.deleteProject(project.id)
+  }
+
+  handleNew = () => {
+    this.props.history.push('/new')
+  }
+
   render() {
     return (
       <div>
-        <ProjectList projects={this.props.projects} />
+        <ProjectList projects={this.props.projects} handleNew={this.handleNew} handleDelete={this.handleDelete} />
         <Switch>
           <Route path={`/new`}>
             <ProjectInput projects={this.props.projects} createProject={this.props.createProject}/>
