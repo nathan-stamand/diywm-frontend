@@ -19,7 +19,7 @@ class App extends Component{
       return <div>Loading...</div>
     }
     else {
-      return <ProjectContainer {...routerProps} projects={this.props.projects} />
+      return <ProjectContainer {...routerProps} steps={this.props.steps} projects={this.props.projects} />
     }
   }
 
