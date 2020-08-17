@@ -20,15 +20,13 @@ class ProjectShow extends Component {
 
   renderTotalTime = project => {
     const reducer = (acc, currVal) => ({attributes: {time: acc.attributes.time + currVal.attributes.time}})
-    const steps = project.steps ? project.steps.filter(step => {
-      return step.project_id || step.attributes.project_id === parseInt(project.id)
-    }) : []
-    if (steps && steps.length > 0) {
+    const steps = this.props.steps.filter(step => step.attributes.project_id === parseInt(project.id))
+    if (steps.length > 0) {
       let totalMin = steps.reduce(reducer).attributes.time
       let hours = parseInt(totalMin / 60)
-      let hourString = (hours === 1 ? 'hour' : 'hours')
+      let hourString = hours === 1 ? 'hour' : 'hours'
       let min = totalMin % 60
-      let minString = (min === 1 ? 'minute' : 'minutes')
+      let minString = min === 1 ? 'minute' : 'minutes'
       return (`${hours} ${hourString} ${min} ${minString}`)
     }
     else {
